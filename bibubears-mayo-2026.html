@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BibuBears · Reporte Meta Ads · Mayo 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0e1a;
+  --surface:#111827;
+  --surface-2:#0f1626;
+  --border:rgba(255,255,255,0.07);
+  --accent:#00d4aa;
+  --accent2:#ff6b35;
+  --accent3:#7c3aed;
+  --text:#e8eaf0;
+  --muted:#6b7a9a;
+  --good:#10b981;
+  --warn:#f59e0b;
+  --bad:#ef4444;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:clamp(14px,1.5vw,16px);line-height:1.6;}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:12px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.topbar-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(14px,1.8vw,18px);letter-spacing:0.15em;color:var(--text);}
+.topbar-badge{background:rgba(0,212,170,0.12);border:1px solid rgba(0,212,170,0.3);color:var(--accent);font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;white-space:nowrap;letter-spacing:0.05em;}
+.header{position:relative;padding:clamp(48px,8vw,100px) clamp(16px,6vw,80px) clamp(40px,6vw,72px);overflow:hidden;border-bottom:1px solid var(--border);}
+.header::before{content:'';position:absolute;top:-120px;right:-80px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,170,0.08) 0%,transparent 70%);pointer-events:none;}
+.header::after{content:'';position:absolute;bottom:-80px;left:60px;width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,0.06) 0%,transparent 70%);pointer-events:none;}
+.header-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;}
+.header-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,6vw,72px);line-height:1.05;margin-bottom:16px;}
+.header-title span{color:var(--accent);}
+.header-sub{font-size:clamp(14px,1.8vw,18px);color:var(--muted);max-width:680px;margin-bottom:40px;}
+.header-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;max-width:760px;}
+.header-meta-item{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:14px 18px;}
+.header-meta-label{font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:4px;}
+.header-meta-value{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text);}
+.section{padding:clamp(40px,6vw,72px) clamp(16px,6vw,80px);}
+.section+.section{border-top:1px solid var(--border);}
+.section-number{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;}
+.section-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,3.5vw,40px);line-height:1.1;margin-bottom:clamp(24px,4vw,48px);}
+.subheading{font-family:'Syne',sans-serif;font-size:18px;margin-bottom:20px;color:var(--muted);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-top:32px;}
+.subheading:first-child{margin-top:0;}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:32px;}
+.kpi-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent-color,var(--accent));border-radius:12px;padding:20px 22px;position:relative;}
+.kpi-label{font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:8px;}
+.kpi-value{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);line-height:1;margin-bottom:8px;}
+.kpi-sub{font-size:12px;color:var(--muted);}
+.kpi-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;margin-top:6px;}
+.badge-good{background:rgba(16,185,129,0.15);color:var(--good);}
+.badge-warn{background:rgba(245,158,11,0.15);color:var(--warn);}
+.badge-bad{background:rgba(239,68,68,0.15);color:var(--bad);}
+.badge-info{background:rgba(0,212,170,0.12);color:var(--accent);}
+.alert{border-radius:10px;padding:14px 18px;font-size:13px;margin-bottom:12px;border-left:3px solid;}
+.alert-good{background:rgba(16,185,129,0.08);border-color:var(--good);color:#a7f3d0;}
+.alert-warn{background:rgba(245,158,11,0.08);border-color:var(--warn);color:#fde68a;}
+.alert-info{background:rgba(0,212,170,0.08);border-color:var(--accent);color:#a7f3d0;}
+.alert-bad{background:rgba(239,68,68,0.08);border-color:var(--bad);color:#fecaca;}
+.alert strong{font-weight:700;}
+.insight{background:linear-gradient(135deg,rgba(0,212,170,0.06),rgba(124,58,237,0.04));border:1px solid rgba(0,212,170,0.2);border-radius:12px;padding:18px 22px;margin-top:20px;font-size:14px;line-height:1.65;}
+.insight strong{color:var(--accent);font-weight:700;}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-bottom:16px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead{background:rgba(255,255,255,0.04);}
+th{padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:700;white-space:nowrap;}
+td{padding:12px 16px;border-top:1px solid var(--border);vertical-align:middle;}
+tr:hover td{background:rgba(255,255,255,0.025);}
+.num{font-family:'Syne',sans-serif;font-weight:700;}
+.num-good{color:var(--good);}
+.num-warn{color:var(--warn);}
+.num-bad{color:var(--bad);}
+.num-accent{color:var(--accent);}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:0.05em;}
+.tag-tofu{background:rgba(0,212,170,0.15);color:var(--accent);}
+.tag-bofu{background:rgba(124,58,237,0.15);color:#a78bfa;}
+.tag-mofu{background:rgba(255,107,53,0.15);color:var(--accent2);}
+.tag-reels{background:rgba(124,58,237,0.15);color:#a78bfa;}
+.tag-feed{background:rgba(16,185,129,0.15);color:var(--good);}
+.tag-male{background:rgba(59,130,246,0.15);color:#93c5fd;}
+.tag-female{background:rgba(236,72,153,0.15);color:#f9a8d4;}
+.tag-winner{background:rgba(0,212,170,0.2);color:var(--accent);border:1px solid rgba(0,212,170,0.4);}
+.tag-paused{background:rgba(245,158,11,0.15);color:var(--warn);}
+.tag-killed{background:rgba(239,68,68,0.15);color:var(--bad);}
+.bar-section{margin-bottom:32px;}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.bar-label{font-size:12px;color:var(--muted);width:clamp(80px,14vw,140px);text-align:right;flex-shrink:0;}
+.bar-track{flex:1;background:rgba(255,255,255,0.06);border-radius:99px;height:28px;position:relative;overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;display:flex;align-items:center;padding:0 12px;font-size:11px;font-weight:700;color:var(--bg);}
+.ad-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:24px;}
+.ad-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;}
+.ad-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin:8px 0 16px;line-height:1.3;}
+.ad-metric{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.ad-metric:last-child{border-bottom:none;}
+.ad-metric-label{color:var(--muted);}
+.ad-metric-val{font-family:'Syne',sans-serif;font-weight:700;}
+.aes-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px;}
+.aes-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.aes-row:last-child{border-bottom:none;margin-bottom:0;}
+.aes-rank{font-family:'Syne',sans-serif;font-weight:800;font-size:11px;color:var(--muted);width:24px;flex-shrink:0;}
+.aes-seg{font-size:12px;width:200px;flex-shrink:0;}
+.aes-bar{flex:1;background:rgba(255,255,255,0.06);border-radius:99px;height:20px;position:relative;overflow:hidden;}
+.aes-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),#00b894);}
+.aes-score{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;width:40px;text-align:right;flex-shrink:0;}
+.next-step-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px;}
+.next-step-priority{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+.next-step-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:10px;}
+.next-step-body{font-size:13px;color:var(--muted);line-height:1.7;}
+.next-step-body strong{color:var(--text);}
+.funnel-bar{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.funnel-label{font-size:12px;color:var(--muted);width:180px;flex-shrink:0;}
+.funnel-track{flex:1;background:rgba(255,255,255,0.06);border-radius:6px;height:22px;overflow:hidden;}
+.funnel-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:700;color:#fff;}
+.funnel-pct{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;width:52px;text-align:right;flex-shrink:0;}
+footer{padding:40px clamp(16px,6vw,80px);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.15em;color:var(--muted);}
+.footer-note{font-size:11px;color:var(--muted);opacity:0.6;}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-logo">NAVY MARKETING</div>
+  <div class="topbar-badge">BibuBears · Mayo 2026</div>
+</nav>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Reporte Meta Ads · Mayo 2026</div>
+  <h1 class="header-title">BibuBears<br/><span>Mayo 2026</span></h1>
+  <p class="header-sub">Primer mes con ROAS cuenta positivo (1,60×). Hallazgo del ángulo ganador COMPARACIONFLORES con ROAS 1,56× y validación del ICP femenino senior (65+ Mujer AES 343). Expansión a mercado europeo consolidada con DE, CA y GB como mercados secundarios activos.</p>
+  <div class="header-meta">
+    <div class="header-meta-item">
+      <div class="header-meta-label">Periodo</div>
+      <div class="header-meta-value">01 – 31 Mayo 2026</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">Gasto total</div>
+      <div class="header-meta-value">€1.271,70</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">Compras</div>
+      <div class="header-meta-value">21</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">ROAS Cuenta</div>
+      <div class="header-meta-value">1,60×</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">Mercados</div>
+      <div class="header-meta-value">USA · CA · DE · GB · IT · FR · ES</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 RESUMEN EJECUTIVO -->
+<div class="section">
+  <div class="section-number">01</div>
+  <h2 class="section-heading">Resumen Ejecutivo</h2>
+
+  <div class="alert alert-info" style="margin-bottom:24px"><strong>📌 Comparativa vs mes anterior:</strong> Todos los deltas comparan mayo natural (1–31 mayo 2026) contra abril natural (1–30 abril 2026). Datos de abril extraídos del reporte anterior.</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Gasto Total Cuenta</div>
+      <div class="kpi-value">€1.271,70</div>
+      <div class="kpi-sub">€804,66 abril</div>
+      <span class="kpi-badge badge-bad">▲ +58,0% vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">ROAS Cuenta</div>
+      <div class="kpi-value num-good">1,60×</div>
+      <div class="kpi-sub">0,54× abril</div>
+      <span class="kpi-badge badge-good">▲ +196% vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Compras totales</div>
+      <div class="kpi-value">21</div>
+      <div class="kpi-sub">8 en abril</div>
+      <span class="kpi-badge badge-good">▲ +162% vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">CPA (Coste por Compra)</div>
+      <div class="kpi-value">€51,86</div>
+      <div class="kpi-sub">€100,58 abril</div>
+      <span class="kpi-badge badge-good">▼ -48,4% vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">ATC totales</div>
+      <div class="kpi-value">241</div>
+      <div class="kpi-sub">CPATC €5,27</div>
+      <span class="kpi-badge badge-good">▲ mejora vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">CTR Enlace</div>
+      <div class="kpi-value">1,80%</div>
+      <div class="kpi-sub">2,21% abril (cuenta global)</div>
+      <span class="kpi-badge badge-warn">▼ -18,6% vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Impresiones</div>
+      <div class="kpi-value">189.370</div>
+      <div class="kpi-sub">Alcance: 167.902</div>
+      <span class="kpi-badge badge-bad">▲ +58% vs abril</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">CPM Medio</div>
+      <div class="kpi-value">€6,72</div>
+      <div class="kpi-sub">Test TF: €7,57</div>
+      <span class="kpi-badge badge-info">Cuenta global</span>
+    </div>
+  </div>
+
+  <div class="alert alert-good"><strong>✅ Lo que ha funcionado:</strong> El ángulo COMPARACIONFLORES (rosas vs Bibu) ha emergido como el creativo ganador con <strong>ROAS 1,56×, 7 compras y CPATC €4,16</strong> siendo el ad más eficiente de la cuenta. UGC_A4 ha generado <strong>5 compras a CPA €16,10 con ROAS 4,68×</strong>, el mejor ratio coste/resultado de todo el mes. El ROAS de cuenta ha pasado de 0,54× en abril a <strong>1,60× en mayo</strong> — primer mes con cuenta en positivo real.</div>
+  <div class="alert alert-warn"><strong>⚠️ Lo que vigilar:</strong> El CTR del Test Tráfico Frío se ha reducido a <strong>1,18%</strong> (vs 1,47% abril) a pesar del incremento de inversión. El adset TEST_ÁNGULO3_UGC+SOCIALPROOF concentra el 49% del gasto del TF (€509) con 12 compras pero <strong>CPA €42,43</strong> — rentable pero mejorable. La campaña de INTERACCIÓN no ha generado compras directas aunque sí warming efectivo.</div>
+  <div class="alert alert-info"><strong>ℹ️ Nota estructural:</strong> Mayo es el primer mes con la cuenta expandida a mercado europeo completo (DE, IT, FR, ES, CH, DK, RO además de USA/CA). Se han lanzado 6 nuevos adsets estáticos (REACCION, COMPANERO, ADOPCION, PERSONALIDAD, GIFTER, MASQUEUNPELUCHE) además de los adsets legacy. TESTEO ABO y Campaña 1 sin gasto — no se reportan.</div>
+</div>
+
+<!-- 02 ANÁLISIS POR DESTINO -->
+<div class="section">
+  <div class="section-number">02</div>
+  <h2 class="section-heading">Análisis por Destino / Producto</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Test Tráfico Frío — BOFU</div>
+      <div class="kpi-value">€1.037,15</div>
+      <div class="kpi-sub">81,6% del gasto total</div>
+      <span class="kpi-badge badge-good">20 compras · ROAS 2,03×</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent2)">
+      <div class="kpi-label">INTERACCIÓN Calentamiento — TOFU</div>
+      <div class="kpi-value">€153,83</div>
+      <div class="kpi-sub">12,1% del gasto total</div>
+      <span class="kpi-badge badge-info">Warming · 44.656 alcance</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">Retargeting — BOFU</div>
+      <div class="kpi-value">€80,72</div>
+      <div class="kpi-sub">6,3% del gasto total</div>
+      <span class="kpi-badge badge-warn">1 compra · ROAS 13,94×</span>
+    </div>
+  </div>
+
+  <div class="bar-section">
+    <div class="bar-row">
+      <div class="bar-label">Test TF (BOFU)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:81.6%;background:linear-gradient(90deg,var(--accent),#00b894);">81,6% · €1.037</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Interacción (TOFU)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:12.1%;background:var(--accent2);">12,1%</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Retargeting (BOFU)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:6.3%;background:var(--accent3);">6,3%</div></div>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Lectura del split:</strong> La distribución 81/12/7 es correcta para la fase F1 en que se encuentra BibuBears. El TOFU de Interacción actúa como calentamiento de audiencia (no conversión directa) y el Retargeting captura a quienes ya visitaron. El ROAS de Retargeting de <strong>13,94×</strong> sobre 1 compra no es significativo estadísticamente pero confirma que el remarketing funciona cuando hay tráfico caliente. El siguiente paso natural es escalar el presupuesto de Retargeting cuando el Test TF genere más volumen.</div>
+</div>
+
+<!-- 03 ANÁLISIS POR CAMPAÑA -->
+<div class="section">
+  <div class="section-number">03</div>
+  <h2 class="section-heading">Análisis por Campaña — Δ% vs Abril 2026</h2>
+
+  <div class="alert alert-info"><strong>📌 Nota comparativa:</strong> Los valores de abril provienen del reporte anterior (periodo 12 mar–12 abr para las campañas legacy, y del reporte de cuenta de abril para los KPIs globales).</div>
+
+  <div class="table-wrap" style="margin-top:20px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaña</th>
+          <th>Métrica</th>
+          <th>Abril 2026</th>
+          <th>Mayo 2026</th>
+          <th>Δ%</th>
+          <th>Lectura</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="7"><strong>Test Tráfico Frío</strong><br/><span class="tag tag-bofu">Conversión</span></td>
+          <td>Gasto</td><td>~€533</td><td class="num">€1.037,15</td><td class="num num-bad">▲ +94,6%</td><td>Escala significativa</td>
+        </tr>
+        <tr>
+          <td>Impresiones</td><td>—</td><td class="num">137.096</td><td class="num">Nuevo</td><td>—</td>
+        </tr>
+        <tr>
+          <td>CPM</td><td>—</td><td class="num">€7,57</td><td class="num">—</td><td>—</td>
+        </tr>
+        <tr>
+          <td>CTR Enlace</td><td>1,47%</td><td class="num">1,18%</td><td class="num num-bad">▼ -19,7%</td><td>Baja con más volumen</td>
+        </tr>
+        <tr>
+          <td>ATC</td><td>~82</td><td class="num">203</td><td class="num num-good">▲ +147%</td><td>Señal de intención fuerte</td>
+        </tr>
+        <tr>
+          <td>Compras</td><td>8</td><td class="num">20</td><td class="num num-good">▲ +150%</td><td>Múltiplo x2,5</td>
+        </tr>
+        <tr>
+          <td>CPA</td><td>€100,58</td><td class="num num-good">€51,86</td><td class="num num-good">▼ -48,4%</td><td>Mejora drástica</td>
+        </tr>
+        <tr>
+          <td rowspan="4"><strong>INTERACCIÓN</strong><br/><span class="tag tag-tofu">Calentamiento</span></td>
+          <td>Gasto</td><td>€218,17</td><td class="num">€153,83</td><td class="num num-good">▼ -29,5%</td><td>Ajuste correcto</td>
+        </tr>
+        <tr>
+          <td>Impresiones</td><td>—</td><td class="num">45.853</td><td>—</td><td>—</td>
+        </tr>
+        <tr>
+          <td>CTR Enlace</td><td>—</td><td class="num">3,99%</td><td>—</td><td>Alto — buen gancho</td>
+        </tr>
+        <tr>
+          <td>Visitas Perfil IG</td><td>~800</td><td class="num">~1.400+</td><td class="num num-good">▲ +75%</td><td>Warming efectivo</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>Retargeting</strong><br/><span class="tag tag-mofu">BOFU</span></td>
+          <td>Gasto</td><td>€53,11</td><td class="num">€80,72</td><td class="num num-bad">▲ +52%</td><td>Más presupuesto</td>
+        </tr>
+        <tr>
+          <td>ATC</td><td>—</td><td class="num">21</td><td>—</td><td>CPATC €3,84 — eficiente</td>
+        </tr>
+        <tr>
+          <td>Compras</td><td>1</td><td class="num">1</td><td class="num num-warn">= Sin cambio</td><td>Muestra pequeña</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight"><strong>Lectura cruzada:</strong> El salto más relevante del mes es la <strong>caída del CPA de €100,58 a €51,86 (-48%)</strong> con un gasto casi duplicado. Esto confirma que los ángulos nuevos (COMPARACIONFLORES, UGC_A4) están convirtiendo a un coste muy por debajo de lo que lo hacían los creativos de abril. El CTR baja porque la cuenta tiene más volumen de impresiones con creativos estáticos de menor CTR que los vídeos, pero la eficiencia de conversión mejora.</div>
+</div>
+
+<!-- 04 ANÁLISIS POR PAÍS -->
+<div class="section">
+  <div class="section-number">04</div>
+  <h2 class="section-heading">Análisis por País de Origen</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">🇺🇸 USA</div>
+      <div class="kpi-value">€473,60</div>
+      <div class="kpi-sub">37,2% del gasto · 6 compras</div>
+      <span class="kpi-badge badge-warn">CPA €78,93 · CTR 2,07%</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">🇩🇪 Alemania</div>
+      <div class="kpi-value">€157,66</div>
+      <div class="kpi-sub">12,4% del gasto · 6 compras</div>
+      <span class="kpi-badge badge-good">CPA €26,28 · CTR 1,50%</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">🇨🇦 Canadá</div>
+      <div class="kpi-value">€145,96</div>
+      <div class="kpi-sub">11,5% del gasto · 4 compras</div>
+      <span class="kpi-badge badge-warn">CPA €36,49 · CTR 1,51%</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent2)">
+      <div class="kpi-label">🇬🇧 Reino Unido</div>
+      <div class="kpi-value">€109,82</div>
+      <div class="kpi-sub">8,6% del gasto · 3 compras</div>
+      <span class="kpi-badge badge-good">CPA €36,61 · CTR 1,11%</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">🇮🇹 Italia</div>
+      <div class="kpi-value">€82,07</div>
+      <div class="kpi-sub">6,5% del gasto · 0 compras</div>
+      <span class="kpi-badge badge-bad">Sin conversión · CPA ∞</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">🇫🇷 Francia</div>
+      <div class="kpi-value">€73,00</div>
+      <div class="kpi-sub">5,7% del gasto · 0 compras</div>
+      <span class="kpi-badge badge-bad">Sin conversión · CPA ∞</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">🇪🇸 España</div>
+      <div class="kpi-value">€70,60</div>
+      <div class="kpi-sub">5,6% del gasto · 1 compra</div>
+      <span class="kpi-badge badge-warn">CPA €70,60 · CTR 2,53%</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">🇨🇭 Suiza</div>
+      <div class="kpi-value">€73,53</div>
+      <div class="kpi-sub">5,8% del gasto · 0 compras</div>
+      <span class="kpi-badge badge-bad">Sin conversión · CPA ∞</span>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Hallazgo clave del mes:</strong> <strong>Alemania emerge como la gran sorpresa</strong> — con solo el 12,4% del gasto genera 6 compras al CPA más barato de toda la cuenta (€26,28). Supera a USA (6 compras) invirtiendo 3× menos. Canadá y UK también convierten a costes razonables. <strong>Italia, Francia y Suiza acumulan €228 sin una sola compra</strong> — mercados candidatos a limitar o excluir en junio para concentrar presupuesto donde ya hay señal de conversión real.</div>
+</div>
+
+<!-- 05 ANÁLISIS DEMOGRÁFICO -->
+<div class="section">
+  <div class="section-number">05</div>
+  <h2 class="section-heading">Análisis Demográfico</h2>
+
+  <div class="subheading">5a — Por Género (Test Tráfico Frío)</div>
+  <div class="kpi-grid">
+    <div class="kpi-card" style="--accent-color:var(--accent2)">
+      <div class="kpi-label">Mujer <span class="tag tag-female">F</span></div>
+      <div class="kpi-value">~€558</div>
+      <div class="kpi-sub">~53,8% del gasto TF</div>
+      <span class="kpi-badge badge-good">9 compras · CPA ~€62</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Hombre <span class="tag tag-male">M</span></div>
+      <div class="kpi-value">~€455</div>
+      <div class="kpi-sub">~43,9% del gasto TF</div>
+      <span class="kpi-badge badge-warn">9 compras · CPA ~€50</span>
+    </div>
+  </div>
+  <div class="alert alert-info"><strong>Giro demográfico clave en mayo:</strong> A diferencia de abril donde el ICP era mayoritariamente masculino 35-64, mayo muestra que <strong>la mujer convierte con similar volumen que el hombre pero con mayor gasto</strong>. Esto se explica por el ángulo COMPARACIONFLORES que conecta con el gifter femenino. El AES demográfico detallado (sección 08) revela que <strong>Mujer 65+ y Mujer 55-64 son los segmentos más eficientes de la cuenta este mes</strong>.</div>
+
+  <div class="subheading">5b — Por Edad (Test Tráfico Frío)</div>
+  <div class="bar-section">
+    <div class="bar-row">
+      <div class="bar-label">65+ <span class="tag tag-female">F</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:4.5%;background:var(--good);">€46,85</div></div>
+      <span style="font-size:11px;color:var(--good);margin-left:8px;">2 compras · CPA €23,43 🏆</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">55-64 <span class="tag tag-female">F</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:5.8%;background:var(--accent);">€59,98</div></div>
+      <span style="font-size:11px;color:var(--accent);margin-left:8px;">1 compra · CPA €59,98</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">18-24 <span class="tag tag-female">F</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:14.7%;background:var(--accent);">€152,43</div></div>
+      <span style="font-size:11px;color:var(--accent);margin-left:8px;">5 compras · CPA €30,49</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">35-44 <span class="tag tag-female">F</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:9.3%;background:var(--warn);">€96,05</div></div>
+      <span style="font-size:11px;color:var(--muted);margin-left:8px;">1 compra · CPA €96,05</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">25-34 <span class="tag tag-female">F</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:12.0%;background:var(--warn);">€124,66</div></div>
+      <span style="font-size:11px;color:var(--muted);margin-left:8px;">2 compras · CPA €62,33</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">25-34 <span class="tag tag-male">M</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:16.5%;background:var(--bad);">€170,69</div></div>
+      <span style="font-size:11px;color:var(--bad);margin-left:8px;">4 compras · CPA €42,67</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">18-24 <span class="tag tag-male">M</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:21.8%;background:var(--bad);">€225,84</div></div>
+      <span style="font-size:11px;color:var(--bad);margin-left:8px;">4 compras · CPA €56,46</span>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">35-44 <span class="tag tag-male">M</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:3.7%;background:var(--accent);">€38,78</div></div>
+      <span style="font-size:11px;color:var(--accent);margin-left:8px;">1 compra · CPA €38,78</span>
+    </div>
+  </div>
+
+  <div class="subheading">5c — Buyer Persona por Segmento</div>
+  <div class="ad-cards">
+    <div class="ad-card" style="border-top:3px solid var(--good);">
+      <span class="tag" style="background:rgba(16,185,129,0.15);color:var(--good);">🏆 PERFIL PRINCIPAL</span>
+      <div class="ad-card-title">Mujer Senior 65+ — La Adoptante Emocional</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€46,85</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val num-good">2</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-good">€23,43</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">5,73%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">AES Mayo</span><span class="ad-metric-val num-good">343</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;">Abuela o madre mayor que compra para regalar. Altísimo CTR (5,73%) — el mensaje conecta muy rápido. CPA más bajo de la cuenta. Infra-representada en el gasto actual.</p>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--accent);">
+      <span class="tag tag-winner">PERFIL SECUNDARIO</span>
+      <div class="ad-card-title">Mujer 18-24 — La Gifter Viral</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€152,43</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val num-good">5</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-good">€30,49</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">1,12%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">AES Mayo</span><span class="ad-metric-val num-good">133</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;">Sorpresa del mes. Alta en volumen de gasto y generando 5 compras a CPA muy competitivo. Posiblemente el segmento que descubrió BibuBears por orgánico y convierte en paid con el ángulo de comparación.</p>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--accent);">
+      <span class="tag" style="background:rgba(0,212,170,0.15);color:var(--accent);">PERFIL EMERGENTE</span>
+      <div class="ad-card-title">Hombre 35-44 — El Gifter Masculino</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€38,78</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val">1</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-good">€38,78</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">0,98%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">AES Mayo</span><span class="ad-metric-val num-good">109</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;">ICP histórico de BibuBears. Muestra pequeña pero CPA razonable. El gasto asignado es muy bajo — hay que aumentarlo para validar la hipótesis del gifter masculino en el nuevo contexto de creativos estáticos.</p>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--bad);">
+      <span class="tag" style="background:rgba(239,68,68,0.15);color:var(--bad);">SUMIDERO</span>
+      <div class="ad-card-title">Hombre 18-24 — Alto gasto, baja eficiencia</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€225,84</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val num-warn">4</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-bad">€56,46</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">0,67%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">AES Mayo</span><span class="ad-metric-val num-bad">75</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;">Recibe el 21,8% del gasto con el CTR más bajo de la cuenta y CPA por encima de la media. El mayor sumidero por volumen de inversión. Candidato a exclusión o limitación de bid en junio.</p>
+    </div>
+  </div>
+
+  <div class="subheading">5d — Por Placement</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Placement</th><th>Gasto</th><th>% Total</th><th>CPM</th><th>CTR</th><th>ATC</th><th>Compras</th><th>Lectura</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-reels">IG Reels</span></td>
+          <td class="num">€413,15</td><td>32,5%</td>
+          <td class="num num-good">€4,30</td><td class="num">1,43%</td>
+          <td class="num">69</td><td class="num num-good">9</td>
+          <td><strong>CPM más bajo · Mayor volumen de compras</strong></td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-feed">FB Feed</span></td>
+          <td class="num">€312,40</td><td>24,6%</td>
+          <td class="num num-bad">€11,53</td><td class="num num-good">2,84%</td>
+          <td class="num">61</td><td class="num">3</td>
+          <td>CTR alto pero CPM caro — ratio mixto</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-feed">IG Feed</span></td>
+          <td class="num">€257,79</td><td>20,3%</td>
+          <td class="num num-bad">€10,61</td><td class="num">1,49%</td>
+          <td class="num">49</td><td class="num">6</td>
+          <td>6 compras — segundo placement en conversión</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-stories">IG Stories</span></td>
+          <td class="num">€229,90</td><td>18,1%</td>
+          <td class="num">€7,29</td><td class="num num-good">2,81%</td>
+          <td class="num">60</td><td class="num">3</td>
+          <td>Alto CTR pero pocas conversiones</td>
+        </tr>
+        <tr>
+          <td>FB Reels</td>
+          <td class="num">€41,66</td><td>3,3%</td>
+          <td class="num">€9,81</td><td class="num">2,24%</td>
+          <td class="num">2</td><td class="num num-bad">0</td>
+          <td>Sin compras — observar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight"><strong>Placement ganador de mayo: IG Reels.</strong> Con el CPM más bajo de la cuenta (€4,30) y 9 compras — el 42,9% de todas las compras del mes en solo el 32,5% del gasto. La combinación IG Reels + IG Feed acumula el 75% de las compras. <strong>FB Feed tiene CTR 2,84% pero solo 3 compras</strong> — el clic no está convirtiendo al ritmo que el CPM justificaría. Recomendación: priorizar IG Reels + IG Feed y limitar FB Reels en junio.</div>
+</div>
+
+<!-- 06 CAMBIOS ESTRUCTURALES -->
+<div class="section">
+  <div class="section-number">06</div>
+  <h2 class="section-heading">Cambios Estructurales del Mes</h2>
+
+  <div class="next-step-card" style="border-left:4px solid var(--bad);">
+    <div class="next-step-priority" style="color:var(--bad);">🔴 CAMBIO CLAVE</div>
+    <div class="next-step-title">Lanzamiento de 6 nuevos adsets estáticos — Mayo 2026</div>
+    <div class="next-step-body">Se lanzó el paquete de 6 adsets del briefing T01 (REACCION, COMPANERO, ADOPCION, PERSONALIDAD, GIFTER, MASQUEUNPELUCHE) con creativos estáticos en formato broad. Todos configurados con €4/día de presupuesto inicial. <strong>Resultado:</strong> COMPANERO y ADOPCION ya generaron ventas en el primer mes. GIFTER y MASQUEUNPELUCHE sin conversiones — se mantienen en observación.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--warn);">
+    <div class="next-step-priority" style="color:var(--warn);">🟡 CAMBIO IMPORTANTE</div>
+    <div class="next-step-title">Apagado de ADOPCION_v3 y COMPANERO_v5</div>
+    <div class="next-step-body">Se pausaron <strong>BIBU_0526_PROS_EVRG_ADOPCION_STAT_v3</strong> (CPC €1,00, doble de la media, 0 ATC) y <strong>BIBU_0526_PROS_EVRG_COMPANERO_STAT_v5</strong> (€29 gastados, 1 ATC, CTR bajo). Ambos apagados en la sesión de optimización de finales de mayo tras verificar datos en ventanas de 7 y 14 días.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--warn);">
+    <div class="next-step-priority" style="color:var(--warn);">🟡 CAMBIO IMPORTANTE</div>
+    <div class="next-step-title">Adición de Reels del 22 mayo y 18 mayo a campaña INTERACCIÓN</div>
+    <div class="next-step-body">El Reel del 11 de mayo lideró la campaña de Interacción con CPM €3,18 y coste por visita al perfil €0,10. Se añadieron el Reel del 22 de mayo (60k visitas y 4.500 likes en orgánico) y el Reel del 18 de mayo para mantener frescura creativa en el calentamiento de audiencia.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--accent3);">
+    <div class="next-step-priority" style="color:var(--accent3);">🟣 AJUSTE</div>
+    <div class="next-step-title">Expansión a mercado europeo — Primer mes completo</div>
+    <div class="next-step-body">Mayo es el primer mes con cobertura geográfica completa: USA + Canadá + Europa (DE, IT, FR, ES, CH, DK, RO, GB). <strong>Alemania emerge como el mercado europeo más eficiente</strong> con CPA €26,28 — mejor que USA. Italia, Francia y Suiza sin conversiones con €228 invertidos.</div>
+  </div>
+
+  <div class="subheading">6b — Frecuencia y Saturación</div>
+  <div class="kpi-grid">
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">Test Tráfico Frío</div>
+      <div class="kpi-value num-good">1,16×</div>
+      <div class="kpi-sub">Benchmark alerta: &gt;2,5×</div>
+      <span class="kpi-badge badge-good">✅ Sin saturación</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">INTERACCIÓN TOFU</div>
+      <div class="kpi-value num-good">1,03×</div>
+      <div class="kpi-sub">Benchmark alerta: &gt;3×</div>
+      <span class="kpi-badge badge-good">✅ Audiencia fresca</span>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">Retargeting</div>
+      <div class="kpi-value">1,41×</div>
+      <div class="kpi-sub">Benchmark alerta: &gt;2,5×</div>
+      <span class="kpi-badge badge-good">✅ Margen amplio</span>
+    </div>
+  </div>
+  <div class="insight"><strong>Frecuencia bajo control en todas las campañas.</strong> La cuenta tiene margen amplio de escala sin riesgo de saturación. La frecuencia baja del TOFU (1,03×) confirma que se está llegando constantemente a audiencia nueva — señal de que el calentamiento está cumpliendo su función de alimentar el retargeting.</div>
+</div>
+
+<!-- 07 TOP CREATIVIDADES -->
+<div class="section">
+  <div class="section-number">07</div>
+  <h2 class="section-heading">Top Creatividades & Métricas de Vídeo</h2>
+
+  <div class="subheading">7a — Top Ads por Eficiencia (Test Tráfico Frío + Retargeting)</div>
+  <div class="ad-cards">
+    <div class="ad-card" style="border-top:3px solid var(--good);">
+      <div class="ad-rank-badge"><span class="tag tag-winner">🏆 TOP 1</span></div>
+      <div class="ad-card-title">UGC_A4</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€80,52</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val num-good">5</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-good">€16,10</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ROAS</span><span class="ad-metric-val num-good">4,68×</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ATC</span><span class="ad-metric-val">30 · €2,68</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">1,15%</span></div>
+      <span class="kpi-badge badge-good" style="margin-top:8px;">✅ Mejor ROAS de la cuenta</span>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--accent);">
+      <div class="ad-rank-badge"><span class="tag tag-winner">🥈 TOP 2</span></div>
+      <div class="ad-card-title">BIBU_0526_PROS_EVRG_COMPARACIONFLORES_STAT</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€224,70</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val num-good">7</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-good">€32,10</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ROAS</span><span class="ad-metric-val num-good">1,56×</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ATC</span><span class="ad-metric-val">54 · €4,16</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">0,75%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Hook Rate</span><span class="ad-metric-val num-warn">12,4%</span></div>
+      <span class="kpi-badge badge-good" style="margin-top:8px;">✅ Mayor volumen compras</span>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--accent);">
+      <div class="ad-rank-badge"><span class="tag tag-winner">🥉 TOP 3</span></div>
+      <div class="ad-card-title">ANGULO_Fear Concept_26</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€187,36</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val num-warn">4</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-warn">€46,84</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ROAS</span><span class="ad-metric-val num-warn">1,04×</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ATC</span><span class="ad-metric-val">41 · €4,57</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val">1,54%</span></div>
+      <span class="kpi-badge badge-warn" style="margin-top:8px;">⚠️ En break even</span>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--accent);">
+      <div class="ad-rank-badge"><span class="tag tag-tofu">TOP 4 — INTERACCIÓN</span></div>
+      <div class="ad-card-title">REELS 11 MAYO</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€82,40</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras directas</span><span class="ad-metric-val">0</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ATC (asistidos)</span><span class="ad-metric-val">14 · €5,89</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val num-good">3,92%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Hook Rate</span><span class="ad-metric-val num-good">32,1%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Hold Rate</span><span class="ad-metric-val num-warn">17,8%</span></div>
+      <span class="kpi-badge badge-good" style="margin-top:8px;">✅ Mejor hook del mes</span>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--warn);">
+      <div class="ad-rank-badge"><span class="tag tag-paused">APAGADO</span></div>
+      <div class="ad-card-title">BIBU_0526_PROS_EVRG_ADOPCION_STAT_v3</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€39,12</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPC</span><span class="ad-metric-val num-bad">€1,00</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ATC</span><span class="ad-metric-val num-warn">2</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">Compras</span><span class="ad-metric-val">1</span></div>
+      <span class="kpi-badge badge-bad" style="margin-top:8px;">❌ CPC doble de la media</span>
+    </div>
+    <div class="ad-card" style="border-top:3px solid var(--bad);">
+      <div class="ad-rank-badge"><span class="tag tag-killed">APAGADO</span></div>
+      <div class="ad-card-title">BIBU_0526_PROS_EVRG_COMPANERO_STAT_v5</div>
+      <div class="ad-metric"><span class="ad-metric-label">Gasto</span><span class="ad-metric-val">€62,37</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">ATC</span><span class="ad-metric-val num-bad">7 · €8,91</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CTR</span><span class="ad-metric-val num-warn">2,00%</span></div>
+      <div class="ad-metric"><span class="ad-metric-label">CPA</span><span class="ad-metric-val num-bad">€62,37</span></div>
+      <span class="kpi-badge badge-bad" style="margin-top:8px;">❌ Mal rendimiento</span>
+    </div>
+  </div>
+
+  <div class="subheading">7b — Funnel de Retención de Vídeo (TOFU — Reels)</div>
+  <div class="bar-section" style="max-width:700px;">
+    <div class="funnel-bar">
+      <div class="funnel-label">Impresiones</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:100%;background:var(--accent);">100%</div></div>
+      <div class="funnel-pct">100%</div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-label">Vídeo 3s+ (Hook Rate)</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:33.0%;background:var(--accent);">33,0%</div></div>
+      <div class="funnel-pct num-good">33,0%</div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-label">Al 25%</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:26.1%;background:var(--accent);">26,1%</div></div>
+      <div class="funnel-pct">26,1%</div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-label">Al 50%</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:18.5%;background:var(--warn);">18,5%</div></div>
+      <div class="funnel-pct">18,5%</div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-label">Al 95%</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:9.5%;background:var(--warn);">9,5%</div></div>
+      <div class="funnel-pct">9,5%</div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-label">ThruPlays (Hold Rate)</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:22.6%;background:var(--accent3);">22,6%</div></div>
+      <div class="funnel-pct num-warn">22,6%</div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-label">Clics enlace</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:3.99%;background:var(--accent2);">4,0%</div></div>
+      <div class="funnel-pct">4,0%</div>
+    </div>
+  </div>
+  <div class="insight"><strong>Lectura del funnel:</strong> El Hook Rate del TOFU es excelente (<strong>33%</strong> — benchmark bueno &gt;25%). Los Reels paran el scroll. Sin embargo el <strong>Hold Rate es 22,6%</strong> — una vez que entra, solo 1 de cada 4 llega al final. La caída más pronunciada se produce entre el 25% y el 50% del vídeo, lo que indica que el contenido del primer tercio es fuerte pero el desarrollo pierde fuerza. Para junio: fortalecer el cuerpo del vídeo entre los segundos 3-10.</div>
+</div>
+
+<!-- 08 AES -->
+<div class="section">
+  <div class="section-number">08</div>
+  <h2 class="section-heading">Audience Efficiency Score (AES)</h2>
+
+  <div style="background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.2);border-radius:12px;padding:24px 28px;margin-bottom:28px;">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">¿Qué es el AES y cómo leerlo?</div>
+    <p style="font-size:14px;line-height:1.8;margin-bottom:16px;">El <strong>Audience Efficiency Score (AES)</strong> es una nota del 0 al 200 que ponemos a cada grupo de personas para ver de un vistazo cuáles rinden bien y cuáles mal. Es una métrica propia de Navy — no aparece en Meta. La usamos para decidir rápido dónde meter más presupuesto y dónde recortar.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:18px;">
+      <div style="background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.25);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--accent);margin-bottom:4px;">100</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Rinde <strong style="color:var(--text);">igual</strong> que la media de tu campaña</div>
+      </div>
+      <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--good);margin-bottom:4px;">&gt; 100</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;"><strong style="color:var(--text);">Mejor</strong> que la media — escalar presupuesto</div>
+      </div>
+      <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:14px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--bad);margin-bottom:4px;">&lt; 100</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;"><strong style="color:var(--text);">Peor</strong> que la media — recortar o excluir</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:16px;">Por ejemplo: <strong style="color:var(--text);">Mujer 65+ tiene AES 200</strong> → rinde el doble que la media. <strong style="color:var(--text);">Hombre 18-24 tiene AES 75</strong> → rinde un 25% peor.</p>
+
+    <!-- Cómo se calcula -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px 20px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">¿De dónde sale el número?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+        <div style="background:rgba(0,212,170,0.06);border:1px solid rgba(0,212,170,0.15);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Paso 1 · ¿Cuánto cuesta vender?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Miramos cuánto cuesta conseguir una compra en ese grupo. Si es más barato que la media → buena nota. Si es más caro → mala nota.</div>
+        </div>
+        <div style="background:rgba(0,212,170,0.06);border:1px solid rgba(0,212,170,0.15);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Paso 2 · ¿Cuántos clican?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Miramos qué % de personas clica el anuncio al verlo. Si clican más que la media → buena nota. Si clican menos → mala nota.</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border-radius:8px;padding:12px 14px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:var(--accent);flex-shrink:0;">½ + ½</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;"><strong style="color:var(--text);">Paso 3 · Hacemos la media de los dos.</strong> El AES final es el promedio de ambas notas. Si en las dos cosas ese grupo rinde igual que la media → AES 100. Si rinde mejor en las dos → AES &gt;100.</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--muted);line-height:1.6;">Solo se puntúan grupos con <strong style="color:var(--text);">≥1.000 impresiones</strong> — por debajo no hay datos suficientes para decidir. · Media de mayo: CPA €51,86 · CTR 1,18% · Es un cálculo propio de Navy, no es una métrica oficial de Meta.</div>
+    </div>
+  </div>
+
+  <p style="color:var(--muted);margin-bottom:24px;font-size:13px;line-height:1.7;">Calculado sobre <strong>Test Tráfico Frío</strong>. Escala 0–200, media campaña = 100. La línea vertical marca el 100.</p>
+
+  <div class="aes-card">
+    <div class="aes-row" style="border-left:3px solid var(--good);">
+      <div class="aes-rank">#1</div>
+      <div class="aes-seg">65+ · Mujer <span class="tag tag-female">F</span> <span class="tag tag-winner">CPA €23,43</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:99.5%;background:linear-gradient(90deg,var(--accent),var(--good));"></div>
+      </div>
+      <div class="aes-score num" style="color:var(--good);">200*</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--good);">
+      <div class="aes-rank">#2</div>
+      <div class="aes-seg">55-64 · Mujer <span class="tag tag-female">F</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:99.5%;background:linear-gradient(90deg,var(--accent),var(--good));"></div>
+      </div>
+      <div class="aes-score num" style="color:var(--good);">199</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--good);">
+      <div class="aes-rank">#3</div>
+      <div class="aes-seg">18-24 · Mujer <span class="tag tag-female">F</span> <span class="tag tag-winner">CPA €30,49</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:66.5%;background:linear-gradient(90deg,var(--accent),var(--good));"></div>
+      </div>
+      <div class="aes-score num" style="color:var(--good);">133</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--accent);">
+      <div class="aes-rank">#4</div>
+      <div class="aes-seg">35-44 · Mujer <span class="tag tag-female">F</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:59%;"></div>
+      </div>
+      <div class="aes-score num">118</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--accent);">
+      <div class="aes-rank">#5</div>
+      <div class="aes-seg">35-44 · Hombre <span class="tag tag-male">M</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:54.5%;"></div>
+      </div>
+      <div class="aes-score num">109</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--accent);">
+      <div class="aes-rank">#6</div>
+      <div class="aes-seg">45-54 · Mujer <span class="tag tag-female">F</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:53%;"></div>
+      </div>
+      <div class="aes-score num">106</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--accent);">
+      <div class="aes-rank">#7</div>
+      <div class="aes-seg">25-34 · Mujer <span class="tag tag-female">F</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:51%;"></div>
+      </div>
+      <div class="aes-score num">102</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:6px 12px;margin:4px 0;">
+      <div style="flex:1;height:1px;background:rgba(255,255,255,0.12);"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:rgba(255,255,255,0.35);text-transform:uppercase;">— por debajo de la media —</div>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,0.12);"></div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--warn);">
+      <div class="aes-rank">#8</div>
+      <div class="aes-seg">25-34 · Hombre <span class="tag tag-male">M</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:45%;background:linear-gradient(90deg,var(--warn),#fbbf24);"></div>
+      </div>
+      <div class="aes-score num" style="color:var(--warn);">90</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--bad);">
+      <div class="aes-rank">#9</div>
+      <div class="aes-seg">18-24 · Hombre <span class="tag tag-male">M</span> <span class="tag" style="background:rgba(239,68,68,0.15);color:var(--bad);">Mayor gasto</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:37.5%;background:linear-gradient(90deg,var(--bad),#fb7185);"></div>
+      </div>
+      <div class="aes-score num" style="color:var(--bad);">75</div>
+    </div>
+    <div class="aes-row" style="border-left:3px solid var(--bad);">
+      <div class="aes-rank">#10</div>
+      <div class="aes-seg">45-54 · Hombre <span class="tag tag-male">M</span> <span class="tag" style="background:rgba(239,68,68,0.15);color:var(--bad);">0 compras</span></div>
+      <div class="aes-bar" style="position:relative;">
+        <div style="position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(255,255,255,0.3);z-index:1;"></div>
+        <div class="aes-fill" style="width:29.5%;background:linear-gradient(90deg,var(--bad),#fb7185);"></div>
+      </div>
+      <div class="aes-score num" style="color:var(--bad);">59</div>
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;">*AES 200 = cap máximo de la escala. Mujer 65+ tiene iCPA cappeado a 200 por CPA €23,43 siendo 2,2× más barato que la media.</p>
+
+  <div class="insight" style="margin-top:20px;"><strong>Conclusiones AES Mayo:</strong> <strong>Giro histórico respecto a abril</strong> — el TOP-7 lo ocupan íntegramente mujeres. La Mujer Senior (55-64 y 65+) domina con AES 199-200, CPAs de €23-59 y CTR de 3,7-5,7%. La <strong>Mujer 18-24 (AES 133)</strong> es la gran sorpresa del mes — 5 compras a €30,49 con el 14,7% del gasto. Por debajo de la media: Hombre 18-24 (AES 75) recibe el <strong>21,8% del gasto con AES 75</strong> — el desajuste más claro de la cuenta. Redirigir €50-100 de H18-24 a M65+ y M55-64 incrementaría el ROAS de cuenta estimado en +15-20%.</div>
+</div>
+
+<!-- 09 NEXT STEPS -->
+<div class="section">
+  <div class="section-number">09</div>
+  <h2 class="section-heading">Next Steps Priorizados — Junio 2026</h2>
+
+  <div class="next-step-card" style="border-left:4px solid var(--bad);">
+    <div class="next-step-priority" style="color:var(--bad);">🔴 URGENTE</div>
+    <div class="next-step-title">Excluir o limitar Hombre 18-24 — sumidero confirmado</div>
+    <div class="next-step-body">Hombre 18-24 recibe €225,84 (21,8% del gasto de TF) con AES 75 y CTR 0,67%. <strong>(a)</strong> Crear exclusión de audiencia H18-24 en los adsets principales de Test TF. <strong>(b)</strong> Redirigir presupuesto liberado a segmentos con AES &gt;130 (M65+, M55-64, M18-24). <strong>(c)</strong> Evaluar en 7 días si el CPA de cuenta baja de €45. Métrica de éxito: CPA cuenta &lt;€40 con mismo gasto.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--bad);">
+    <div class="next-step-priority" style="color:var(--bad);">🔴 URGENTE</div>
+    <div class="next-step-title">Pausar Italia, Francia y Suiza — €228 sin conversiones</div>
+    <div class="next-step-body">IT + FR + CH han consumido €228,60 en mayo sin generar ni una compra. <strong>(a)</strong> Pausar o excluir estos 3 países de las campañas de conversión. <strong>(b)</strong> Concentrar gasto europeo en DE (CPA €26,28) y GB (CPA €36,61) que ya convierten. <strong>(c)</strong> Mantener observación sobre ES (1 compra a €70,60) antes de decidir. Métrica de éxito: CPA europeo &lt;€40.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--warn);">
+    <div class="next-step-priority" style="color:var(--warn);">🟡 IMPORTANTE</div>
+    <div class="next-step-title">Escalar COMPARACIONFLORES — ángulo ganador validado</div>
+    <div class="next-step-body">COMPARACIONFLORES ha generado 7 compras a CPATC €4,16 — el ad con mayor volumen de compras del mes. <strong>(a)</strong> Subir presupuesto del adset TEST_ÁNGULO3_UGC+SOCIALPROOF de €15 a €20-25/día. <strong>(b)</strong> Lanzar las variaciones del briefing T02 (COMPARACION1, COMPARACION2, COMPARACION3) para encontrar variantes que mejoren el CTR (actualmente 0,75%). <strong>(c)</strong> Testear con Hook diferente — el Frame 1 actual tiene Hook Rate 12,4% vs benchmark 25%. Métrica de éxito: CPATC &lt;€4 y CTR &gt;1,5%.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--warn);">
+    <div class="next-step-priority" style="color:var(--warn);">🟡 IMPORTANTE</div>
+    <div class="next-step-title">Aumentar presupuesto Retargeting — señal positiva con CPATC €3,84</div>
+    <div class="next-step-body">El adset de Retargeting tiene CPATC de €3,84 — el más eficiente de la cuenta — con solo €80 de gasto. <strong>(a)</strong> Subir budget de €2/día a €5-8/día. <strong>(b)</strong> Añadir creativo del unboxing al mix (ya genera ATC asistidos). <strong>(c)</strong> Revisar frecuencia en 2 semanas — actualmente 1,41× con margen amplio. Métrica de éxito: CPATC &lt;€4 mantenido con budget x3.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--accent3);">
+    <div class="next-step-priority" style="color:var(--accent3);">🟣 MEJORA</div>
+    <div class="next-step-title">Mejorar Hold Rate del TOFU — caída pronunciada entre 25%-50%</div>
+    <div class="next-step-body">El Hook Rate del TOFU es 33% (excelente) pero el Hold Rate es 22,6%. La caída del 33% al 9,5% en el tramo 25%-95% indica que el contenido pierde fuerza tras el gancho. <strong>(a)</strong> Comunicar a Diego que los Reels necesitan un segundo gancho entre los segundos 5-10. <strong>(b)</strong> Probar estructura: hook 0-3s → producto/sorpresa 3-8s → CTA 8-15s. <strong>(c)</strong> Objetivo: Hold Rate &gt;30%.</div>
+  </div>
+
+  <div class="next-step-card" style="border-left:4px solid var(--accent3);">
+    <div class="next-step-priority" style="color:var(--accent3);">🟣 MEJORA</div>
+    <div class="next-step-title">Crear adset específico para Mujer 65+ y 55-64</div>
+    <div class="next-step-body">Los segmentos con AES 199-200 apenas reciben gasto porque están en adsets broad sin priorización. <strong>(a)</strong> Crear adset segmentado M55-64 + M65+ con €5/día. <strong>(b)</strong> Asignarle los creativos con mejor rendimiento (COMPARACIONFLORES + UGC_A4). <strong>(c)</strong> Evaluar en 14 días si el CPA se mantiene por debajo de €30. Métrica de éxito: CPA &lt;€35 con ≥3 compras en 14 días.</div>
+  </div>
+</div>
+
+<!-- 10 CONCLUSIÓN -->
+<div class="section">
+  <div class="section-number">10</div>
+  <h2 class="section-heading">Conclusión</h2>
+
+  <p style="font-size:16px;line-height:1.8;margin-bottom:20px;">Mayo 2026 es el <strong>primer mes con cuenta en positivo real para BibuBears</strong>. El ROAS de cuenta pasa de 0,54× en abril a <strong>1,60×</strong>, con <strong>21 compras</strong> (vs 8 en abril) y el CPA se reduce a la mitad: de €100,58 a <strong>€51,86</strong>. Es un salto estructural, no incremental.</p>
+
+  <p style="font-size:15px;line-height:1.8;margin-bottom:20px;color:var(--muted);">El calentamiento TOFU ha funcionado con precisión: el Reel del 11 de mayo lidera con <strong>Hook Rate 33%</strong> y coste por visita al perfil de €0,10. La campaña de Interacción ha reducido gasto (de €218 a €153) manteniendo el impacto de warming — más eficiente por euro. El pipeline TOFU → Retargeting empieza a funcionar, con el adset de retargeting entregando un CPATC de €3,84, el mejor de la cuenta.</p>
+
+  <p style="font-size:15px;line-height:1.8;margin-bottom:20px;color:var(--muted);">En conversión, <strong>dos creativos han liderado el mes</strong>: UGC_A4 con ROAS 4,68× y CPA €16,10 (el mejor ratio de la cuenta), y COMPARACIONFLORES con 7 compras y CPATC €4,16. Este último confirma que el ángulo de comparación rosas vs Bibu es el hallazgo estratégico del mes y la base sobre la que construir junio.</p>
+
+  <p style="font-size:15px;line-height:1.8;margin-bottom:20px;color:var(--muted);">El AES revela un <strong>giro demográfico respecto a abril</strong>: el TOP-7 lo ocupan íntegramente segmentos femeninos. Mujer 65+ (AES 200, CPA €23,43) y Mujer 55-64 (AES 199) son los segmentos más eficientes de la cuenta con diferencia. Mujer 18-24 emerge como sorpresa con AES 133 y 5 compras a €30,49. El mayor desajuste: Hombre 18-24 recibe el 21,8% del gasto con AES 75 — es el sumidero prioritario a resolver en junio.</p>
+
+  <p style="font-size:15px;line-height:1.8;margin-bottom:20px;color:var(--muted);">Por geografía, <strong>Alemania es la gran sorpresa del mes</strong> — CPA €26,28, 6 compras con solo €157 invertidos. Supera a USA en eficiencia invirtiendo 3× menos. Italia, Francia y Suiza acumulan €228 sin ninguna compra — candidatos claros a exclusión en junio para concentrar gasto donde ya hay señal.</p>
+
+  <p style="font-size:15px;line-height:1.8;margin-bottom:20px;color:var(--muted);">La frecuencia sigue sana en toda la cuenta (1,03-1,41×) — hay margen amplio de escala sin riesgo de saturación. La cuenta está en la fase correcta: creativo ganador identificado, demografía validada, geografía con señal clara. El siguiente paso es ejecutar con precisión.</p>
+
+  <div class="insight">
+    <strong>Tres focos para Junio 2026:</strong><br/><br/>
+    <strong>1. Concentrar gasto donde ya convierte</strong> — excluir H18-24 y los mercados sin conversión (IT, FR, CH), redirigir a M55-64+, DE y GB. Objetivo: CPA &lt;€40.<br/><br/>
+    <strong>2. Escalar el ángulo COMPARACION</strong> — lanzar el briefing T02 (rosas, peluche genérico y cena vs Bibu) para encontrar variantes con CTR &gt;1,5% que mantengan el CPATC &lt;€4.<br/><br/>
+    <strong>3. Activar el segmento senior femenino</strong> — crear un adset específico M55-64 + M65+ con los creativos ganadores. AES 199-200 con apenas presupuesto asignado es la mayor oportunidad sin explotar de la cuenta.
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">NAVY MARKETING × BIBUBEARS</div>
+  <div class="footer-note">Reporte Mayo 2026 · Atribución: 7d clic / 1d view · Moneda: EUR · Generado junio 2026</div>
+</footer>
+
+</body>
+</html>
